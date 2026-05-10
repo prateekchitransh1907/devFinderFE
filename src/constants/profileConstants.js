@@ -1,0 +1,11 @@
+export const GET_PROFILE = 'profile/GET_PROFILE';
+
+export const GET_PROFILE_PENDING = 'profile/GET_PROFILE_PENDING';
+export const GET_PROFILE_SUCCESS = 'profile/GET_PROFILE_SUCCESS';
+export const GET_PROFILE_ERROR = 'profile/GET_PROFILE_ERROR';
+
+export const EDIT_PROFILE = 'profile/EDIT_PROFILE';
+
+export const EDIT_PROFILE_PENDING = 'profile/EDIT_PROFILE_PENDING';
+export const EDIT_PROFILE_SUCCESS = 'profile/EDIT_PROFILE_SUCCESS';
+export const EDIT_PROFILE_ERROR = 'profile/EDIT_PROFILE_ERROR';
