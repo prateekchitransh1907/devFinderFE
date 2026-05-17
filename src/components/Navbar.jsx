@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
+
 
 function Navbar() {
     const navigate = useNavigate();
@@ -27,7 +29,7 @@ function Navbar() {
         <nav className="w-full bg-base-100 shadow-sm px-4 md:px-8 flex items-center justify-between h-16">
             {/* left - logo */}
             <Link to="/" className="flex items-center">
-                {/* <Logo size="md" /> */}
+                <Logo size="md" />
             </Link>
 
             {/* Right - Search + Profile */}
