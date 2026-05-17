@@ -11,16 +11,16 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Protected routes with navbar */}
-          <Route element={<AppLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<Profile />} />
-          <Route path="/contact" element={<Connections />} />
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/connections" element={<Connections />} />
           <Route path="/requests" element={<Requests />} />
-          </Route>
+        </Route>
         {/* standalone public pages */}
         <Route path="/login" element={<Login />} />
-        
-        <Route path="*" element={<Navigate to="/" replace/>} />
+
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
 
