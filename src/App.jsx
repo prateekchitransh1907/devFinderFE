@@ -5,17 +5,20 @@ import Profile from "./pages/Profile";
 import Connections from "./pages/Connections";
 import Requests from "./pages/Requests";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Protected routes with navbar */}
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/connections" element={<Connections />} />
-          <Route path="/requests" element={<Requests />} />
+        <Route element={<ProtectedRoute />}>
+          <Route element={<AppLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/connections" element={<Connections />} />
+            <Route path="/requests" element={<Requests />} />
+          </Route>
         </Route>
         {/* standalone public pages */}
         <Route path="/login" element={<Login />} />
