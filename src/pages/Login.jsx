@@ -495,6 +495,9 @@ function LoginPage() {
                     </div>
                 </div>
             )}
+
+            {/* ---Login card --- */}
+
         </div>
     );
 }
