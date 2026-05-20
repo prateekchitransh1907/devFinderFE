@@ -1,16 +1,16 @@
 import { ENDPOINTS } from "../api/endpoints";
+import { buildAuthHeaders } from "../api/auth";
 import {
-  GET_FEED,
-  GET_FEED_ERROR,
-  GET_FEED_PENDING,
-  GET_FEED_SUCCESS,
-} from "../constants/feedConstants";
-import {
-  getFeedError,
   getFeedPending,
   getFeedSuccess,
+  getFeedError,
 } from "../reducers/feed/feedSlice";
-import { buildAuthHeaders } from "../api/auth";
+import {
+  GET_FEED,
+  GET_FEED_PENDING,
+  GET_FEED_SUCCESS,
+  GET_FEED_ERROR,
+} from "../constants/feedConstants";
 
 export const getFeed = () => async (dispatch) => {
   console.info(`[feed] ${GET_FEED}`);
@@ -29,9 +29,8 @@ export const getFeed = () => async (dispatch) => {
       const message =
         data?.message || data?.error || `Failed to load feed (${res.status})`;
       throw new Error(message);
-    }
+    } // API may return array directly or wrapped in { feedUsers: [...] } or { data: [...] }
 
-    //API may return array directly or wrapped in {feedUsers:[...] or {data:[...] }}
     const items = Array.isArray(data)
       ? data
       : data?.feedUsers ?? data?.data ?? [];
@@ -42,9 +41,9 @@ export const getFeed = () => async (dispatch) => {
   } catch (error) {
     const errorMessage =
       error instanceof TypeError
-        ? "Network error: Unable to reach the server. Please check your connection."
-        : error.message ||
-          "An unexpected error occurred while fetching the feed.";
+        ? "Network error. Please check your connection and try again."
+        : error.message || "Failed to load feed.";
+
     dispatch(getFeedError(errorMessage));
     console.error(`[feed] ${GET_FEED_ERROR}`, { error: errorMessage });
 
