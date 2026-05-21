@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
-
+import { logout } from '../reducers/auth/authSlice'
 
 function Navbar() {
     const navigate = useNavigate();

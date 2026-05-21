@@ -1,59 +1,57 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    items: [],
-    getRequests: {
-        status: "idle",
-        error: null,
-    },
-    reviewRequests: {
-        // keyed by request ID for easy access
-        byId: {},
-    }
-}
+  items: [],
+  getRequests: {
+    status: "idle",
+    error: null,
+  },
+  reviewRequest: {
+    // keyed by requestId so each card tracks its own loading/error state
+    byId: {},
+  },
+};
 
 const requestsSlice = createSlice({
-    name: "requests",
-    initialState,
-    reducers: {
-        getRequestsPending: (state) => {
-            state.getRequests.status = "pending";
-            state.getRequests.error = null;
-        },
-        getRequestsSuccess: (state, action) => {
-            state.getRequests.status = "success";
-            state.items = action.payload || [];
-            state.getRequests.error = null;
-        },
-        getRequestsError: (state, action) => {
-            state.getRequests.status = "error";
-            state.getRequests.error = action.payload || 'Unable to fetch requests. Please try again.';
-        },
-        reviewRequestPending: (state, action) => {
-            const requestId = action.payload;
-            state.reviewRequests.byId[requestId] = {
-                status: "pending",
-                error: null,
-            };
-        },
-        reviewRequestSuccess: (state, action) => {
-            const { requestId } = action.payload;
-            state.reviewRequests.byId[requestId] = {
-                status: "success",
-                error: null,
-            };
-            state.items = state.items.filter(request => request.id !== requestId);
-        },
-        reviewRequestError: (state, action) => {
-            const { requestId, error } = action.payload;
-            state.reviewRequests.byId[requestId] = {
-                status: "error",
-                error: error || 'Unable to review request. Please try again.',
-            };
-        },
+  name: "requests",
+  initialState,
+  reducers: {
+    getRequestsPending: (state) => {
+      state.getRequests.status = "pending";
+      state.getRequests.error = null;
     },
-})
+    getRequestsSuccess: (state, action) => {
+      state.items = action.payload;
+      state.getRequests.status = "success";
+      state.getRequests.error = null;
+    },
+    getRequestsError: (state, action) => {
+      state.getRequests.status = "error";
+      state.getRequests.error = action.payload || "Failed to load requests.";
+    },
+    reviewRequestPending: (state, action) => {
+      const id = action.payload;
+      state.reviewRequest.byId[id] = { status: "pending", error: null };
+    },
+    reviewRequestSuccess: (state, action) => {
+      const id = action.payload;
+      state.reviewRequest.byId[id] = { status: "success", error: null };
+      state.items = state.items.filter((r) => r._id !== id);
+    },
+    reviewRequestError: (state, action) => {
+      const { id, error } = action.payload;
+      state.reviewRequest.byId[id] = { status: "error", error };
+    },
+  },
+});
 
-export const { getRequestsPending, getRequestsSuccess, getRequestsError, reviewRequestPending, reviewRequestSuccess, reviewRequestError } = requestsSlice.actions;
+export const {
+  getRequestsPending,
+  getRequestsSuccess,
+  getRequestsError,
+  reviewRequestPending,
+  reviewRequestSuccess,
+  reviewRequestError,
+} = requestsSlice.actions;
 
 export default requestsSlice.reducer;
