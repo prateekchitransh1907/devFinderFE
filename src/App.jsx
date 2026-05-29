@@ -6,27 +6,29 @@ import Connections from "./pages/Connections";
 import Requests from "./pages/Requests";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Protected routes with navbar */}
-        <Route element={<ProtectedRoute />}>
-          <Route element={<AppLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/connections" element={<Connections />} />
-            <Route path="/requests" element={<Requests />} />
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Protected routes with navbar */}
+          <Route element={<ProtectedRoute />}>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/connections" element={<Connections />} />
+              <Route path="/requests" element={<Requests />} />
+            </Route>
           </Route>
-        </Route>
-        {/* standalone public pages */}
-        <Route path="/login" element={<Login />} />
+          {/* standalone public pages */}
+          <Route path="/login" element={<Login />} />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </BrowserRouter>
-
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
