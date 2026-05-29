@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
 import { clearAuthError } from '../reducers/auth/authSlice'
 import { loginUser, signupUser } from '../actions/login'
+import SEO from '../components/SEO'
 
 const SKILL_OPTIONS = ['JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'Java', 'Go', 'Rust', 'CSS', 'SQL']
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
