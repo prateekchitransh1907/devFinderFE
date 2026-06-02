@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
+import AuthLayout from "./layouts/AuthLayout";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Connections from "./pages/Connections";
@@ -7,6 +8,11 @@ import Requests from "./pages/Requests";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { HelmetProvider } from "react-helmet-async";
+import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
+import TermsOfService from "./pages/legal/TermsOfUsage";
+import RefundPolicy from "./pages/legal/RefundPolicy";
+import ContactUs from "./pages/legal/ContactUs";
+import Pricing from "./pages/legal/Pricing";
 
 function App() {
   return (
@@ -23,7 +29,14 @@ function App() {
             </Route>
           </Route>
           {/* standalone public pages */}
-          <Route path="/login" element={<Login />} />
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/pricing" element={<Pricing />} />
+          </Route>
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
