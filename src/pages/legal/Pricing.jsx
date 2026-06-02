@@ -27,7 +27,7 @@ function Pricing() {
                 <div className="card bg-primary text-primary-content shadow-lg">
                     <div className="card-body">
                         <h2 className="card-title">Premium</h2>
-                        <p className="text-4xl font-bold">Coming Soon</p>
+                        <p className="text-4xl font-bold">₹49/month (Coming Soon)</p>
 
                         <ul className="space-y-2 mt-4">
                             <li>✓ Unlimited Visibility</li>
