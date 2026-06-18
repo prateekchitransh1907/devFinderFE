@@ -13,6 +13,7 @@ import TermsOfService from "./pages/legal/TermsOfUsage";
 import RefundPolicy from "./pages/legal/RefundPolicy";
 import ContactUs from "./pages/legal/ContactUs";
 import Pricing from "./pages/legal/Pricing";
+import Premium from "./pages/Premium";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />
+              <Route path="/premium" element={<Premium />} />
             </Route>
           </Route>
           {/* standalone public pages */}

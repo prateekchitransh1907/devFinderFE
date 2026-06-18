@@ -12,4 +12,5 @@ export const ENDPOINTS = {
     `${API_BASE_URL}/request/send/${status}/${userId}`,
   REQUEST_REVIEW: (status, requestId) =>
     `${API_BASE_URL}/request/review/${status}/${requestId}`,
+  PREMIUM_PAYMENT_CREATE: `${API_BASE_URL}/payment/createOrder`,
 };
