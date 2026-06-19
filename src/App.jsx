@@ -15,7 +15,7 @@ import ContactUs from "./pages/legal/ContactUs";
 import Pricing from "./pages/legal/Pricing";
 import Premium from "./pages/Premium";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPremiumVerifyStatus } from "./actions/payments";
 
 
