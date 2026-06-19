@@ -22,9 +22,17 @@ import { getPremiumVerifyStatus } from "./actions/payments";
 function App() {
   const dispatch = useDispatch();
 
+  const isAuthenticated = useSelector(
+    (state) => state.auth.isAuthenticated
+  );
+
   useEffect(() => {
-    dispatch(getPremiumVerifyStatus());
-  }, []);
+    if (isAuthenticated) {
+      dispatch(getPremiumVerifyStatus());
+    } else {
+      dispatch(resetPremiumVerify());
+    }
+  }, [dispatch, isAuthenticated]);
   return (
     <HelmetProvider>
       <BrowserRouter>
