@@ -2,6 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   payment: null,
+  premiumVerify: {
+    isPremium: false,
+    membershipType: null,
+    status: "idle",
+    error: null,
+  },
   getPayment: {
     status: "idle",
     error: null,
@@ -34,6 +40,30 @@ const paymentSlice = createSlice({
       state.getPayment.status = "idle";
       state.getPayment.error = null;
     },
+
+    getPremiumVerifyPending: (state) => {
+      state.premiumVerify.status = "pending";
+      state.premiumVerify.error = null;
+    },
+    getPremiumVerifySuccess: (state, action) => {
+      state.premiumVerify.status = "success";
+      state.premiumVerify.isPremium = action.payload.isPremium;
+      state.premiumVerify.membershipType = action.payload.membershipType;
+      state.premiumVerify.error = null;
+    },
+    getPremiumVerifyError: (state, action) => {
+      state.premiumVerify.status = "error";
+      state.premiumVerify.error =
+        action.payload || "Unable to verify premium status. Please try again.";
+    },
+    resetPremiumVerify: (state) => {
+      state.premiumVerify = {
+        isPremium: false,
+        membershipType: null,
+        status: "idle",
+        error: null,
+      };
+    },
   },
 });
 
@@ -42,6 +72,10 @@ export const {
   getPaymentSuccess,
   getPaymentError,
   resetPayment,
+  getPremiumVerifyPending,
+  getPremiumVerifySuccess,
+  getPremiumVerifyError,
+  resetPremiumVerify,
 } = paymentSlice.actions;
 
 export default paymentSlice.reducer;

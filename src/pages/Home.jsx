@@ -4,6 +4,7 @@ import { getFeed } from '../actions/feed'
 import { sendRequest } from '../actions/sendRequest'
 import SwipeCard from '../components/SwipeCard'
 import UserDetailPanel from '../components/UserDetailPanel'
+//import { getPremiumVerifyStatus } from '../actions/payments'
 
 function Home() {
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ function Home() {
 
     useEffect(() => {
         dispatch(getFeed())
+        //dispatch(getPremiumVerifyStatus())
     }, [dispatch])
 
     useEffect(() => {

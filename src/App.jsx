@@ -14,8 +14,17 @@ import RefundPolicy from "./pages/legal/RefundPolicy";
 import ContactUs from "./pages/legal/ContactUs";
 import Pricing from "./pages/legal/Pricing";
 import Premium from "./pages/Premium";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getPremiumVerifyStatus } from "./actions/payments";
+
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPremiumVerifyStatus());
+  }, []);
   return (
     <HelmetProvider>
       <BrowserRouter>
