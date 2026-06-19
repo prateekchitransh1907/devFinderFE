@@ -182,7 +182,7 @@ export default function Premium() {
                             >
                                 <div className="card-body">
 
-                                    {plan.popular && (
+                                    {plan.popular && !isPremium && (
                                         <div className="badge badge-warning badge-lg self-start px-4">
                                             MOST POPULAR
                                         </div>
@@ -243,7 +243,7 @@ export default function Premium() {
                                             </div>
                                         )}
 
-                                        <button
+                                        {!isPremium && <button
                                             onClick={() =>
                                                 handleBuyClick(
                                                     plan.membershipType
@@ -267,7 +267,7 @@ export default function Premium() {
                                                     : isPremium
                                                         ? "Membership Active"
                                                         : `Choose ${plan.name}`}
-                                        </button>
+                                        </button>}
 
                                         {isCurrentPlan && (
                                             <button

@@ -8,7 +8,9 @@ function Profile() {
     const profileData = useSelector((state) => state.profile.data)
     const { status, error } = useSelector((state) => state.profile.getProfile)
     const { status: editStatus, error: editError } = useSelector((state) => state.profile.editProfile)
-
+    const { isPremium, membershipType } = useSelector(
+        (state) => state.payments.premiumVerify
+    );
     const [toast, setToast] = useState(null) // { type: 'success'|'error', message }
 
     const [form, setForm] = useState({
@@ -146,7 +148,22 @@ function Profile() {
                             </div>
                         </div>
                         <div>
-                            <p className="font-semibold text-lg">{fullName || 'Your Name'}</p>
+                            <div className="flex items-center gap-2">
+                                <p className="font-semibold text-lg">
+                                    {fullName || "Your Name"}
+                                </p>
+
+                                {isPremium && (
+                                    <div
+                                        className={`badge badge-sm font-semibold ${membershipType === "gold"
+                                            ? "badge-warning"
+                                            : "badge-primary"
+                                            }`}
+                                    >
+                                        {membershipType === "gold" ? "⭐ GOLD member" : "⚡ PRO member"}
+                                    </div>
+                                )}
+                            </div>
                             <p className="text-sm text-base-content/50">{form.emailId || 'your@email.com'}</p>
                             {form.age && <p className="text-sm text-base-content/40">Age {form.age}</p>}
                             <button type="button" className="text-xs text-primary/70 mt-1 hover:underline" onClick={() => setShowPhotoInput(p => !p)}>
