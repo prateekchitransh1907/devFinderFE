@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import { logout } from '../reducers/auth/authSlice'
+import { resetPremiumVerify } from "../reducers/payments/paymentSlice";
+
 
 function Navbar() {
     const navigate = useNavigate();
@@ -22,6 +24,7 @@ function Navbar() {
 
     function handleLogout() {
         dispatch(logout());
+        dispatch(resetPremiumVerify());
         navigate("/login");
     }
 
