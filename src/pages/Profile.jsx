@@ -155,7 +155,7 @@ function Profile() {
 
                                 {isPremium && (
                                     <div
-                                        className={`badge badge-sm font-semibold ${membershipType === "gold"
+                                        className={`badge badge-sm font-semibold px-4 ${membershipType === "gold"
                                             ? "badge-warning"
                                             : "badge-primary"
                                             }`}
