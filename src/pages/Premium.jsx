@@ -231,7 +231,7 @@ export default function Premium() {
 
                                     <div className="card-actions mt-8 flex-col w-full">
 
-                                        {isCurrentPlan && (
+                                        {/* {isCurrentPlan && (
                                             <div className="alert alert-success">
                                                 <span>
                                                     🎉 You are already a{" "}
@@ -241,7 +241,7 @@ export default function Premium() {
                                                     member
                                                 </span>
                                             </div>
-                                        )}
+                                        )} */}
 
                                         {!isPremium && <button
                                             onClick={() =>
