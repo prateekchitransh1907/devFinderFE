@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getConnections } from '../actions/connections'
+import { useNavigate } from 'react-router-dom'
 
 function Connections() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const connections = useSelector((state) => state.connections.items)
     const { status, error } = useSelector((state) => state.connections.getConnections)
     const [messagedIds, setMessagedIds] = useState(new Set())
@@ -12,8 +14,12 @@ function Connections() {
         dispatch(getConnections())
     }, [dispatch])
 
-    function handleMessage(userId) {
-        setMessagedIds(prev => new Set(prev).add(userId))
+    function handleMessage(user) {
+        navigate(`/chat/${user._id}`, {
+            state: {
+                user,
+            },
+        });
     }
 
     if (status === 'pending') {
@@ -103,7 +109,7 @@ function Connections() {
                                 <button
                                     type="button"
                                     disabled={hasMessaged}
-                                    onClick={() => handleMessage(user._id)}
+                                    onClick={() => handleMessage(user)}
                                     className={`btn btn-sm shrink-0 ${hasMessaged ? 'btn-disabled' : 'btn-primary'}`}
                                 >
                                     {hasMessaged ? 'Messaged' : 'Message'}

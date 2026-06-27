@@ -5,6 +5,7 @@ import feedReducer from "../reducers/feed/feedSlice";
 import connectionsReducer from "../reducers/connections/connectionsSlice";
 import requestsReducer from "../reducers/requests/requestsSlice";
 import paymentReducer from "../reducers/payments/paymentSlice";
+import chatReducer from "../reducers/chats/chatSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     connections: connectionsReducer,
     requests: requestsReducer,
     payments: paymentReducer,
+    chat: chatReducer,
   },
 });

@@ -1,4 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
+export const SOCKET_URL = "http://localhost:3000";
 
 export const ENDPOINTS = {
   AUTH_LOGIN: `${API_BASE_URL}/login`,
@@ -14,4 +15,5 @@ export const ENDPOINTS = {
     `${API_BASE_URL}/request/review/${status}/${requestId}`,
   PREMIUM_PAYMENT_CREATE: `${API_BASE_URL}/payment/createOrder`,
   PREMIUM_VERIFY: `${API_BASE_URL}/premium/verify`,
+  GET_CHAT: (userId) => `${API_BASE_URL}/chat/${userId}`,
 };

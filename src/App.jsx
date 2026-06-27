@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPremiumVerifyStatus } from "./actions/payments";
 import { resetPremiumVerify } from "./reducers/payments/paymentSlice";
+import Chat from "./pages/Chat";
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
               <Route path="/connections" element={<Connections />} />
               <Route path="/requests" element={<Requests />} />
               <Route path="/premium" element={<Premium />} />
+              <Route path="/chat/:userId" element={<Chat />} />
             </Route>
           </Route>
           {/* standalone public pages */}
