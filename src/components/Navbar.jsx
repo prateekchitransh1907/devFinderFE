@@ -11,16 +11,26 @@ function Navbar() {
     const dispatch = useDispatch();
 
     const authUser = useSelector((state) => state.auth.user);
+    const profileData = useSelector((state) => state.profile.data);
     const pendingRequestCount = useSelector(
         (state) => state.requests?.items?.length ?? 0
     );
 
-    const firstName = authUser?.firstName || "";
-    const lastName = authUser?.lastName || "";
+    const firstName =
+        profileData?.firstName || authUser?.firstName || "";
+
+    const lastName =
+        profileData?.lastName || authUser?.lastName || "";
 
     const fullName =
-        `${firstName} ${lastName}`.trim() || authUser?.emailId || "user";
-    const photoUrl = authUser?.photoUrl || null;
+        `${firstName} ${lastName}`.trim() ||
+        authUser?.emailId ||
+        "user";
+
+    const photoUrl =
+        profileData?.photoUrl ||
+        authUser?.photoUrl ||
+        null;
 
     function handleLogout() {
         dispatch(logout());

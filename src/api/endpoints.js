@@ -16,4 +16,5 @@ export const ENDPOINTS = {
   PREMIUM_PAYMENT_CREATE: `${API_BASE_URL}/payment/createOrder`,
   PREMIUM_VERIFY: `${API_BASE_URL}/premium/verify`,
   GET_CHAT: (userId) => `${API_BASE_URL}/chat/${userId}`,
+  UPLOAD_PROFILE_PICTURE: `${API_BASE_URL}/upload/profile-picture`,
 };
