@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { editProfile, getProfile } from "../actions/profile";
+import { ENDPOINTS } from "../api/endpoints";
 
 function ProfilePhotoUploader({
     photoUrl,
@@ -45,7 +46,7 @@ function ProfilePhotoUploader({
             formData.append("photo", file);
 
             const response = await fetch(
-                `${import.meta.env.VITE_API_URL}/upload/profile-picture`,
+                ENDPOINTS.UPLOAD_PROFILE_PICTURE,
                 {
                     method: "POST",
                     credentials: "include",
