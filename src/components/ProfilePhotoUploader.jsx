@@ -45,7 +45,7 @@ function ProfilePhotoUploader({
             formData.append("photo", file);
 
             const response = await fetch(
-                "http://localhost:3000/upload/profile-picture",
+                `${import.meta.env.VITE_API_URL}/upload/profile-picture`,
                 {
                     method: "POST",
                     credentials: "include",
